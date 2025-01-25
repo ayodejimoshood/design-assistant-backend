@@ -352,6 +352,18 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
+"@huggingface/inference@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@huggingface/inference/-/inference-3.1.2.tgz#d3b6b32a4f8ff00cea1e436e4ce676ce80c2ed04"
+  integrity sha512-oaSTSlQmx2QY7khWSWUW8Uc47XdVTdTnu11S0ScDKdappHe9Eu8MmeoJDvGvM5rV/X34nOfnovc9X/9HcfNnWQ==
+  dependencies:
+    "@huggingface/tasks" "^0.15.0"
+
+"@huggingface/tasks@^0.15.0":
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/@huggingface/tasks/-/tasks-0.15.2.tgz#857ad3fba66235b09b4e4f54b03699146d635150"
+  integrity sha512-uVAf1qOP4s/il46+NsdnZ0AExcEWsl61z4t9BawM56DJfZlEs4+/dH2o5V5j733VpC7NahaEb+/mfP3sZXqdlw==
+
 "@humanwhocodes/config-array@^0.13.0":
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.13.0.tgz#fb907624df3256d04b9aa2df50d7aa97ec648748"
@@ -741,10 +753,10 @@
     jsonc-parser "3.3.1"
     pluralize "8.0.0"
 
-"@nestjs/testing@^10.0.0":
-  version "10.4.15"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-10.4.15.tgz#4c9fe17bf026c0142040cbe3db464c526f89d36a"
-  integrity sha512-eGlWESkACMKti+iZk1hs6FUY/UqObmMaa8HAN9JLnaYkoLf1Jeh+EuHlGnfqo/Rq77oznNLIyaA3PFjrFDlNUg==
+"@nestjs/testing@^11.0.5":
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-11.0.5.tgz#ff1a0fc43fd3269b6ee3b951e962b547ad2395e9"
+  integrity sha512-izV7r7ea/UgOmDFffQ3zJjqO/lGTs2IPgLesIK2zg7A08WtDj/mRruG1RRuhTXzOphDl6oc3lhey/GuIuRsyIA==
   dependencies:
     tslib "2.8.1"
 
@@ -3542,7 +3554,7 @@ jest-worker@^29.7.0:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest@^29.5.0:
+jest@^29.7.0:
   version "29.7.0"
   resolved "https://registry.yarnpkg.com/jest/-/jest-29.7.0.tgz#994676fc24177f088f1c5e3737f5697204ff2613"
   integrity sha512-NIy3oAFp9shda19hy4HK0HRTWKtPJmGdnvywu01nOqNC2vZg+Z+fvJDxpMQA88eb2I9EcafcdjYgsDthnYTvGw==

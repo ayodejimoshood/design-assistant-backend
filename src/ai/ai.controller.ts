@@ -1,4 +1,3 @@
-// src/ai/ai.controller.ts
 import { Controller, Post, Body } from '@nestjs/common';
 import { AiService } from './ai.service';
 
