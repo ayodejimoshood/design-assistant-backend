@@ -1,6 +1,7 @@
 import { Controller, Post, Body, HttpStatus, HttpException, Logger } from '@nestjs/common';
 import { AiService } from './ai.service';
 import { GenerateWireframeDto } from './dto/generate-wireframe.dto';
+import { WireframeResponse } from './interfaces/wireframe-response.interface';
 
 @Controller('ai')
 export class AiController {
@@ -8,25 +9,19 @@ export class AiController {
   constructor(private aiService: AiService) {}
 
   @Post('wireframe')
-  async generateWireframe(@Body() generateWireframeDto: GenerateWireframeDto) {
+  async generateWireframe(@Body() generateWireframeDto: GenerateWireframeDto): Promise<WireframeResponse> {
     try {
       const result = await this.aiService.generateWireframe(generateWireframeDto.prompt);
-      this.logger.log('Service response:', result);
-
-      if (!result) {
-        throw new HttpException(
-          'No response received from service',
-          HttpStatus.INTERNAL_SERVER_ERROR
-        );
-      }
-
-      return result;
+      return {
+        ...result,
+        dimensions: {
+          width: 375,
+          height: 812
+        }
+      };
     } catch (error) {
-      this.logger.error('Controller error:', error);
-      throw new HttpException(
-        error.message || 'Failed to generate wireframe',
-        HttpStatus.INTERNAL_SERVER_ERROR
-      );
+      this.logger.error('Failed to generate wireframe:', error);
+      throw error;
     }
   }
 }

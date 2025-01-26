@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config'; // ConfigModule is used to load environment variables from .env file
+import { ConfigModule, ConfigService } from '@nestjs/config'; // ConfigModule is used to load environment variables from .env file
 import { TypeOrmModule } from '@nestjs/typeorm'; // TypeOrmModule is used to connect to the database
 import { DatabaseModule } from './database/database.module';
 import { AiModule } from './ai/ai.module';
@@ -19,15 +19,21 @@ import { ProjectsModule } from './projects/projects.module';
     UsersModule,
     ProjectsModule,
     AiModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DB_HOST'),
+        port: +configService.get('DB_PORT'),
+        username: configService.get('DB_USERNAME'),
+        password: configService.get('DB_PASSWORD'),
+        database: configService.get('DB_DATABASE'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: false,
+        migrationsRun: true,
+        migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
+      }),
+      inject: [ConfigService],
     }),
   ],
   controllers: [AppController],
